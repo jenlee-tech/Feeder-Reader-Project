@@ -8,6 +8,8 @@
  * since some of these tests may require DOM elements. We want
  * to ensure they don't run until the DOM is ready.
  */
+
+ //**The First Test Suite */
 $(function() {
     /* This is our first test suite - a test suite just contains
     * a related set of tests. This suite is all about the RSS
@@ -48,16 +50,36 @@ $(function() {
                 expect(element.name.length).not.toBe(0);
             });
         });
-
+    });
 
     /* TODO: Write a new test suite named "The menu" */
+    describe('The menu', function(){
+        it('hides', function(){
+            const body = document.querySelector('body');
+            expect(body.classList.contains('menu-hidden')).toBe(true);
+            
+        })
+    
 
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
+        
+        it('toggles on/off', function(){
+            const body = document.querySelector('body');
+            const menu = document.querySelector('.menu-icon-link');
 
+            menu.click();
+            expect(body.classList.contains('menu-hidden')).toBe(false);
+
+            menu.click();
+            expect(body.classList.contains('menu-hidden')).toBe(true);
+        })
+    })
+
+    
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
@@ -79,5 +101,5 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-    })
-});
+
+})
