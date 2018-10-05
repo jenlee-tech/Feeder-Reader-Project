@@ -32,13 +32,22 @@ $(function() {
          * and that the URL is not empty.
          */
         it('ensure URLs', function(){
+            allFeeds.forEach(element => {
+                expect(element.url).toBeDefined();
+                expect(element.url.length).not.toBe(0);
+            });  
         });
 
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-    
+        it('ensure name', function(){
+            allFeeds.forEach(element => {
+                expect(element.name).toBeDefined();
+                expect(element.name.length).not.toBe(0);
+            });
+        });
 
 
     /* TODO: Write a new test suite named "The menu" */
