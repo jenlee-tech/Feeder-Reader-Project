@@ -94,18 +94,14 @@ $(function() {
         const feed = document.querySelector('.feed'); //selects the element
         let firstFeed, //variables declared to hold results of the feed
             secondFeed;
-        
-      
-        
+                
         beforeEach(done => {
             loadFeed(0, function() { //this is for the firstFeed with an index of 0
                 firstFeed = feed.innerHTML;
-                console.log(firstFeed);
             });
             loadFeed(1, function(){ //this is for the secondFeed with an index of 1
                 secondFeed = feed.innerHTML;
-                console.log(secondFeed);
-                done();
+                done(); //this informs Jasmine that it may exit beforeEach and proceed to test
             });
         });
 
