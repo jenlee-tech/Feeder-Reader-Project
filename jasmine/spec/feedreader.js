@@ -85,7 +85,6 @@ $(function() {
     //**beforeEach function is required because loadFeed is asynchronous*/
    
     describe('Initial Entries', function(){
-        
         beforeEach(function(done){
             loadFeed(0, done); //**runs the loadFeed function at index of 0*/
         });
@@ -102,12 +101,14 @@ $(function() {
     //**this test suite tests that loadFeed function is generating different feeds
     //**each time it loads - this test will loads two feeds and compare them*/
 
+    //**beforeEach function is required because loadFeed is asynchronous*/
+
     describe('New Feed Selection', function(){
         const feed = document.querySelector('.feed'); //**selecting element*/
         let firstFeed, //**variables declared to hold results of the feed*/
             secondFeed;
         
-        //**beforeEach function is required because loadFeed is asynchronous*/
+      
         //**this is for the firstFeed with an index of 0*/
         beforeEach(done => {
             loadFeed(0, function() {
@@ -122,7 +123,7 @@ $(function() {
             });
         });
 
-        //**this test both feeds */
+        //**this test both feeds to ensure they are different after running loadFeed function each time*/
         it('content changes', function(){
             expect(firstFeed !== secondFeed).toBe(true);
         });
