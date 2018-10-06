@@ -72,12 +72,14 @@ $(function() {
             loadFeed(0, done); //runs the loadFeed function at index of 0
         });
         
-        /* test there is more than one feed entry in the .feed container after the loadFeed 
-         * function runs
+        /* After the loadFeed, we test if there is more than one feed entry in the .feed container. 
+         * First we select all the children elements of .feed container, then we test there is more than 
+         * one.
          */
+         
         it('completes work', function(){
-            const feed = document.querySelector('.feed');
-            expect(feed.children.length > 0).toBe(true);
+            const entry = document.querySelector('.feed').getElementsByClassName("entry-link").length;
+            expect(entry > 0).toBe(true);
 
         });
     });
@@ -94,16 +96,15 @@ $(function() {
             secondFeed;
         
       
-        //this is for the firstFeed with an index of 0
+        
         beforeEach(done => {
-            loadFeed(0, function() {
+            loadFeed(0, function() { //this is for the firstFeed with an index of 0
                 firstFeed = feed.innerHTML;
-                done();
+                console.log(firstFeed);
             });
-         
-        //this is for the secondFeed with an index of 1
-            loadFeed(1, function(){
+            loadFeed(1, function(){ //this is for the secondFeed with an index of 1
                 secondFeed = feed.innerHTML;
+                console.log(secondFeed);
                 done();
             });
         });
